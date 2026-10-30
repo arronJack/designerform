@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview --port 4173",
-    "typecheck": "vue-tsc --noEmit"
+    "typecheck": "vue-tsc --noEmit",
+    "deploy": "node scripts/deploy.mjs"
   },
   "dependencies": {
     "vue": "^3.4.38"

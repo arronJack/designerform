@@ -10,7 +10,11 @@
 - **调性**：暗色「编辑式轻奢」——暖近黑基底 + 单一锐利强调色（琥珀橙 `#ff6b2c`）+ 精致衬线中文大标题，区别于通用「白底紫渐变」AI 味模板。
 - **字体**：展示字 `Bricolage Grotesque`（拉丁）+ `Noto Serif SC`（中文标题）；正文 `Noto Sans SC` + `Sora`。
 - **记忆点**：首屏一块**永不停止的实时设计画布**（设计稿被自动套版/出图），以及下方**真能玩的可交互编辑器**（选模板 → 改文案/配色 → 右侧实时刷新）。
-- **案例最全**：12+ 多行业模板样例（可筛选）+ 6 个客户/品牌落地案例（背景→方案→效果）+ 1 个可交互 Demo。
+- **案例最全**：20 个多行业模板样例（可筛选）+ 10 个客户/品牌落地案例（背景→方案→效果）+ 1 个可交互 Demo。
+
+## 在线访问
+
+- **GitHub Pages（已上线）**：https://arronjack.github.io/designerform/
 
 ## 运行
 
@@ -19,6 +23,7 @@ npm install
 npm run dev        # 本地开发 http://localhost:5188
 npm run build      # 生产构建到 dist/
 npm run preview    # 预览构建产物
+npm run deploy     # 一键部署 GitHub Pages（构建 dist-gh → force push gh-pages 分支）
 ```
 
 ## 目录
