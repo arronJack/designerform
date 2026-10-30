@@ -1,0 +1,86 @@
+/* ============================================================
+   DesignerForm · 设计令牌（Design Tokens）
+   方向：暗色「编辑式轻奢」——暖近黑基底 + 单一锐利强调色（琥珀橙）
+   所有颜色/间距/字阶/圆角/阴影/动效均走变量，组件内禁止硬编码。
+   ============================================================ */
+:root {
+  /* —— 表面与文字（暖近黑，非纯黑） —— */
+  --color-bg: #0e0d0c;
+  --color-bg-2: #131210;
+  --color-surface: #17150f;
+  --color-surface-2: #1f1c16;
+  --color-surface-3: #272219;
+  --color-text: #f4efe6;
+  --color-text-2: #c8bfb0;
+  --color-muted: #8d8475;
+  --color-faint: #5f594c;
+
+  /* —— 单一锐利强调色：琥珀橙（只给关键动作） —— */
+  --color-accent: #ff6b2c;
+  --color-accent-2: #ff8a4c;
+  --color-accent-ink: #1a0d05; /* 强调色之上的文字 */
+  --color-accent-soft: rgba(255, 107, 44, 0.14);
+  --color-accent-line: rgba(255, 107, 44, 0.42);
+
+  /* —— 氛围辅助辉光（仅背景层，不作为行动色） —— */
+  --glow-warm: rgba(255, 107, 44, 0.22);
+  --glow-cool: rgba(64, 132, 120, 0.16);
+
+  /* —— 边框 —— */
+  --color-border: rgba(244, 239, 230, 0.12);
+  --color-border-strong: rgba(244, 239, 230, 0.22);
+
+  /* —— 字体 —— */
+  --font-display: 'Bricolage Grotesque', 'Noto Serif SC', Georgia, serif;
+  --font-body: 'Sora', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+  --font-cjk-serif: 'Noto Serif SC', 'Bricolage Grotesque', serif;
+
+  /* —— 字阶（模块化 1.25，桌面端放大） —— */
+  --fs-xxs: 0.72rem;
+  --fs-xs: 0.82rem;
+  --fs-sm: 0.94rem;
+  --fs-base: 1.0625rem;
+  --fs-md: 1.3rem;
+  --fs-lg: 1.85rem;
+  --fs-xl: 2.7rem;
+  --fs-2xl: clamp(2.6rem, 6vw, 4.4rem);
+  --fs-display: clamp(3rem, 8.5vw, 6.4rem);
+  --lh-tight: 0.98;
+  --lh-snug: 1.12;
+  --lh-base: 1.65;
+
+  /* —— 间距梯度 —— */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+  --space-6: 64px;
+  --space-7: 96px;
+  --space-8: 140px;
+  --maxw: 1200px;
+  --maxw-wide: 1320px;
+
+  /* —— 圆角 —— */
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+
+  /* —— 阴影三级（带环境色而非纯黑） —— */
+  --shadow-1: 0 2px 8px rgba(0, 0, 0, 0.28);
+  --shadow-2: 0 12px 34px rgba(0, 0, 0, 0.4);
+  --shadow-3: 0 28px 70px rgba(0, 0, 0, 0.5);
+  --shadow-accent: 0 16px 44px rgba(255, 107, 44, 0.28);
+
+  /* —— 动效 —— */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 160ms;
+  --dur-base: 340ms;
+  --dur-slow: 680ms;
+
+  /* —— 焦点圈 —— */
+  --focus-ring: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-accent);
+}
