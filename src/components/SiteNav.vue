@@ -2,6 +2,7 @@
 // 吸顶导航：品牌 + 锚点导航 + CTA。移动端链接收起，仅留品牌与 CTA（CSS 控制）。
 const links = [
   { href: '#cap', label: '核心能力' },
+  { href: '#fields', label: '设计领域' },
   { href: '#templates', label: '模板库' },
   { href: '#cases', label: '客户案例' },
   { href: '#demo', label: '在线演示' },

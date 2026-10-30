@@ -4,6 +4,8 @@ import SiteNav from './components/SiteNav.vue'
 import HeroCanvas from './components/HeroCanvas.vue'
 import LogoMarquee from './components/LogoMarquee.vue'
 import Capabilities from './components/Capabilities.vue'
+import Scenarios from './components/Scenarios.vue'
+import DesignFields from './components/DesignFields.vue'
 import TemplateGallery from './components/TemplateGallery.vue'
 import CustomerCases from './components/CustomerCases.vue'
 import LiveEditor from './components/LiveEditor.vue'
@@ -39,7 +41,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
             </span>
             <h1 class="hero__title">一份设计，<br /><span class="accent">无限复用</span>。</h1>
             <p class="hero__lead">
-              DesignerForm 让电商与品牌团队把一份设计稿建模成可编辑节点树——改文案自动重排、品牌套件一键建库、合规与成本闸门内置。规模化的设计产能，从今天开始。
+              DesignerForm 让设计团队把一份稿子建模成可编辑节点树——改文案自动重排、品牌套件一键建库、合规与成本闸门内置。产品、珠宝、建筑、广告、网页、UI·VI、动漫插画，全设计领域一套产能流水线。
             </p>
             <div class="hero__actions">
               <a class="btn btn--primary" href="#demo">
@@ -69,6 +71,8 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
 
     <LogoMarquee />
     <Capabilities />
+    <Scenarios />
+    <DesignFields />
     <TemplateGallery />
     <CustomerCases />
     <LiveEditor />
