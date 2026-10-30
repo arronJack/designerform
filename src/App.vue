@@ -49,7 +49,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
             </div>
             <div class="hero__stats">
               <div class="stat">
-                <div class="stat__num">12+</div>
+                <div class="stat__num">20+</div>
                 <div class="stat__label">行业模板</div>
               </div>
               <div class="stat">
