@@ -3,9 +3,9 @@
 const links = [
   { href: '#cap', label: '核心能力' },
   { href: '#fields', label: '设计领域' },
+  { href: '#studio', label: '工作台' },
   { href: '#templates', label: '模板库' },
   { href: '#cases', label: '客户案例' },
-  { href: '#demo', label: '在线演示' },
   { href: '#pricing', label: '套餐' },
 ]
 </script>

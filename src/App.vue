@@ -8,6 +8,7 @@ import Scenarios from './components/Scenarios.vue'
 import DesignFields from './components/DesignFields.vue'
 import TemplateGallery from './components/TemplateGallery.vue'
 import CustomerCases from './components/CustomerCases.vue'
+import StudioCanvas from './components/StudioCanvas.vue'
 import LiveEditor from './components/LiveEditor.vue'
 import Pricing from './components/Pricing.vue'
 import SiteFooter from './components/SiteFooter.vue'
@@ -44,10 +45,10 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
               DesignerForm 让设计团队把一份稿子建模成可编辑节点树——改文案自动重排、品牌套件一键建库、合规与成本闸门内置。产品、珠宝、建筑、广告、网页、UI·VI、动漫插画，全设计领域一套产能流水线。
             </p>
             <div class="hero__actions">
-              <a class="btn btn--primary" href="#demo">
-                免费试用 <span class="btn__arrow">→</span>
+              <a class="btn btn--primary" href="#studio">
+                进入工作台 <span class="btn__arrow">→</span>
               </a>
-              <a class="btn btn--ghost" href="#templates">浏览模板库</a>
+              <a class="btn btn--ghost" href="#fields">看设计领域</a>
             </div>
             <div class="hero__stats">
               <div class="stat">
@@ -75,6 +76,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
     <DesignFields />
     <TemplateGallery />
     <CustomerCases />
+    <StudioCanvas />
     <LiveEditor />
     <Pricing />
   </main>

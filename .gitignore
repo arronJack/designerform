@@ -2,6 +2,7 @@ node_modules/
 dist/
 dist-gh/
 dist-site*/
+dist-check/
 *.local
 .vite/
 vite.config.ts.timestamp-*.mjs
