@@ -1,5 +1,7 @@
 // DesignerForm · 内容数据
 // 模板样例（多行业）+ 客户/品牌落地案例。纯数据，组件层据此渲染。
+// 2026-10-31：为全部 20 个模板 + 10 个客户案例补齐真实配图（public/cases/），
+// 图片路径用相对路径（不带前导斜杠），在 /designerform/ 与 /designerPlatform/ 子路径下均可用。
 
 export type ThumbKind =
   | 'poster'
@@ -16,10 +18,14 @@ export interface DesignTemplate {
   name: string
   category: string // 用于筛选的 key
   categoryLabel: string
-  kind: ThumbKind // 缩略图版式
+  kind: ThumbKind // 缩略图版式（无真图时的 CSS 兜底）
   accent: string // 主题色
   tags: string[]
   desc: string
+  /** 真实配图（public/cases 下，相对路径）；缺失时组件回退 CSS 缩略版式 */
+  image?: string
+  /** 可选演示视频（相对路径）；有则优先播放 */
+  video?: string
 }
 
 export const templateCategories: { key: string; label: string }[] = [
@@ -44,6 +50,7 @@ export const templates: DesignTemplate[] = [
     accent: '#ff6b2c',
     tags: ['转化率优先', '多SKU', '卖点骨架'],
     desc: '参数位自动代入，改文案不重排，主图与卖点层级一次性到位。',
+    image: 'cases/tpl-ecom-spring.jpg',
   },
   {
     id: 'tpl-poster-618',
@@ -54,6 +61,7 @@ export const templates: DesignTemplate[] = [
     accent: '#e23b5a',
     tags: ['618', '满减', '强对比'],
     desc: '大字标题 + 利益点色块，套版即出，多尺寸一键延展。',
+    image: 'cases/tpl-poster-618.jpg',
   },
   {
     id: 'tpl-logo-lux',
@@ -64,6 +72,7 @@ export const templates: DesignTemplate[] = [
     accent: '#1c1c1c',
     tags: ['极简', '可注册', '黑白'],
     desc: '字标 + 圆形徽标组合，附标准色与留白规范，交付即上架。',
+    image: 'cases/tpl-logo-lux.jpg',
   },
   {
     id: 'tpl-social-xhs',
@@ -74,6 +83,7 @@ export const templates: DesignTemplate[] = [
     accent: '#ff2e63',
     tags: ['笔记', '爆款封面', '竖版'],
     desc: '封面主图 + 三段式文案结构，适配信息流点击模型。',
+    image: 'cases/tpl-social-xhs.jpg',
   },
   {
     id: 'tpl-pack-tea',
@@ -84,6 +94,7 @@ export const templates: DesignTemplate[] = [
     accent: '#2f6b4f',
     tags: ['国潮', '礼赠', '工艺感'],
     desc: '盒型结构 + 主视觉面，含材质与烫印提示，印刷前可预览。',
+    image: 'cases/tpl-pack-tea.jpg',
   },
   {
     id: 'tpl-menu-cafe',
@@ -94,6 +105,7 @@ export const templates: DesignTemplate[] = [
     accent: '#7a4a2b',
     tags: ['堂食', '手冲', '分区'],
     desc: '饮品/轻食分区排版，价格与标注自动对齐，改价不破版。',
+    image: 'cases/tpl-menu-cafe.jpg',
   },
   {
     id: 'tpl-card-biz',
@@ -104,6 +116,7 @@ export const templates: DesignTemplate[] = [
     accent: '#2b4cff',
     tags: ['极简', '留白', '双面'],
     desc: '正面识别 + 背面信息，标准尺寸导出，扫码即存。',
+    image: 'cases/tpl-card-biz.jpg',
   },
   {
     id: 'tpl-banner-live',
@@ -114,6 +127,7 @@ export const templates: DesignTemplate[] = [
     accent: '#ff3d00',
     tags: ['直播', '贴片', '利益点'],
     desc: '主播贴片 + 利益点条，横版竖版同构，秒级换播。',
+    image: 'cases/tpl-banner-live.jpg',
   },
   {
     id: 'tpl-ecom-beauty',
@@ -124,6 +138,7 @@ export const templates: DesignTemplate[] = [
     accent: '#d63384',
     tags: ['成分', '功效', '合规'],
     desc: '成分表与功效卖点分离，合规词自动校验，避免下架风险。',
+    image: 'cases/tpl-ecom-beauty.jpg',
   },
   {
     id: 'tpl-poster-hire',
@@ -134,6 +149,7 @@ export const templates: DesignTemplate[] = [
     accent: '#3a86ff',
     tags: ['校招', '简洁', '信息层级'],
     desc: '岗位 + 亮点 + 投递方式三段，社团渠道直接复用。',
+    image: 'cases/tpl-poster-hire.jpg',
   },
   {
     id: 'tpl-social-food',
@@ -144,6 +160,7 @@ export const templates: DesignTemplate[] = [
     accent: '#f4a300',
     tags: ['探店', '打卡', '暖色'],
     desc: '门店实拍 + 一句话钩子，本地生活投放模板化。',
+    image: 'cases/tpl-social-food.jpg',
   },
   {
     id: 'tpl-pack-beer',
@@ -154,6 +171,7 @@ export const templates: DesignTemplate[] = [
     accent: '#c9a227',
     tags: ['精酿', '个性', '系列'],
     desc: '系列化酒标，风味色与编号体系一致，整组一键换色。',
+    image: 'cases/tpl-pack-beer.jpg',
   },
   {
     id: 'tpl-logo-tech',
@@ -164,6 +182,7 @@ export const templates: DesignTemplate[] = [
     accent: '#00b3a4',
     tags: ['科技', '渐变', '现代'],
     desc: '几何字标 + 辅助图形，深浅底两版同源，命名体系可延展产品线。',
+    image: 'cases/tpl-logo-tech.jpg',
   },
   {
     id: 'tpl-ecom-home',
@@ -174,6 +193,7 @@ export const templates: DesignTemplate[] = [
     accent: '#8a6f4d',
     tags: ['场景图', '材质', '尺寸表'],
     desc: '场景化卖点分区，尺寸/材质参数位自动代入， 家居类目规范内置。',
+    image: 'cases/tpl-ecom-home.jpg',
   },
   {
     id: 'tpl-poster-pet',
@@ -184,6 +204,7 @@ export const templates: DesignTemplate[] = [
     accent: '#ff8c42',
     tags: ['开业', '宠物', '社区'],
     desc: '开业主视觉 + 优惠钩子，社区投放与门店易拉宝同源延展。',
+    image: 'cases/tpl-poster-pet.jpg',
   },
   {
     id: 'tpl-social-pet',
@@ -194,6 +215,7 @@ export const templates: DesignTemplate[] = [
     accent: '#ff7096',
     tags: ['萌宠', '测评', '竖版'],
     desc: '测评三段式封面，好物清单结构化，宠物垂类账号批量产出。',
+    image: 'cases/tpl-social-pet.jpg',
   },
   {
     id: 'tpl-pack-snack',
@@ -204,6 +226,7 @@ export const templates: DesignTemplate[] = [
     accent: '#e8842c',
     tags: ['国潮', '插画', '系列'],
     desc: '插画主视觉 + SKU 色系管理，口味系列一键换色不破版。',
+    image: 'cases/tpl-pack-snack.jpg',
   },
   {
     id: 'tpl-menu-bbq',
@@ -214,6 +237,7 @@ export const templates: DesignTemplate[] = [
     accent: '#a33327',
     tags: ['烧烤', '夜宵', '拼桌'],
     desc: '烤串/酒水分区，套餐组合区独立排版，时令菜品行级增删。',
+    image: 'cases/tpl-menu-bbq.jpg',
   },
   {
     id: 'tpl-card-member',
@@ -224,6 +248,7 @@ export const templates: DesignTemplate[] = [
     accent: '#b8860b',
     tags: ['会员', '权益', '金卡'],
     desc: '等级权益分区呈现，正面权益背面规则，VIP 体系一次配齐。',
+    image: 'cases/tpl-card-member.jpg',
   },
   {
     id: 'tpl-banner-hotel',
@@ -234,6 +259,7 @@ export const templates: DesignTemplate[] = [
     accent: '#0e7c7b',
     tags: ['酒旅', '周年庆', '官网'],
     desc: '官网 Banner + 预订弹窗贴图同构，多城门店换城标不改版式。',
+    image: 'cases/tpl-banner-hotel.jpg',
   },
 ]
 
@@ -245,6 +271,10 @@ export interface CustomerCase {
   quote: string
   challenge: string
   metrics: { n: string; l: string }[]
+  /** 真实配图（public/cases 下，相对路径） */
+  image?: string
+  /** 可选演示视频（相对路径） */
+  video?: string
 }
 
 export const customerCases: CustomerCase[] = [
@@ -261,6 +291,7 @@ export const customerCases: CustomerCase[] = [
       { n: '+340%', l: '详情页月产出' },
       { n: '-58%', l: '单稿设计成本' },
     ],
+    image: 'cases/case-beauty.jpg',
   },
   {
     id: 'case-fnb',
@@ -275,6 +306,7 @@ export const customerCases: CustomerCase[] = [
       { n: '-65%', l: '门店印刷物料' },
       { n: '3×', l: '上新速度' },
     ],
+    image: 'cases/case-fnb.jpg',
   },
   {
     id: 'case-3c',
@@ -289,6 +321,7 @@ export const customerCases: CustomerCase[] = [
       { n: '+260%', l: '主图月产出' },
       { n: '0', l: '极限词事故' },
     ],
+    image: 'cases/case-3c.jpg',
   },
   {
     id: 'case-baby',
@@ -303,6 +336,7 @@ export const customerCases: CustomerCase[] = [
       { n: '-70%', l: '设计外包支出' },
       { n: '+5', l: '月活动频次' },
     ],
+    image: 'cases/case-baby.jpg',
   },
   {
     id: 'case-edu',
@@ -317,6 +351,7 @@ export const customerCases: CustomerCase[] = [
       { n: '-34%', l: '单线索成本' },
       { n: '+48%', l: '素材点击率' },
     ],
+    image: 'cases/case-edu.jpg',
   },
   {
     id: 'case-life',
@@ -331,6 +366,7 @@ export const customerCases: CustomerCase[] = [
       { n: '-80%', l: '交付 SLA' },
       { n: '+2.4×', l: '商户覆盖' },
     ],
+    image: 'cases/case-life.jpg',
   },
   {
     id: 'case-home',
@@ -345,6 +381,7 @@ export const customerCases: CustomerCase[] = [
       { n: '-63%', l: '新品上架周期' },
       { n: '+41%', l: '详情页转化' },
     ],
+    image: 'cases/case-home.jpg',
   },
   {
     id: 'case-pet',
@@ -359,6 +396,7 @@ export const customerCases: CustomerCase[] = [
       { n: '日更', l: '矩阵账号供给' },
       { n: '+87%', l: '内容产能' },
     ],
+    image: 'cases/case-pet.jpg',
   },
   {
     id: 'case-hotel',
@@ -373,6 +411,7 @@ export const customerCases: CustomerCase[] = [
       { n: 'T+0', l: '节日 campaign' },
       { n: '-77%', l: '设计工单' },
     ],
+    image: 'cases/case-hotel.jpg',
   },
   {
     id: 'case-agency',
@@ -387,5 +426,6 @@ export const customerCases: CustomerCase[] = [
       { n: '80%', l: '常规稿模板化' },
       { n: '+55%', l: '人效毛利' },
     ],
+    image: 'cases/case-agency.jpg',
   },
 ]

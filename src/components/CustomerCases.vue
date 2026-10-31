@@ -1,5 +1,6 @@
 <script setup lang="ts">
 // 客户 / 品牌落地案例：背景 → 方案 → 效果指标（故事型）。
+// 2026-10-31：每个案例补真实配图（有视频则优先播放，图作 poster）。
 import { customerCases } from '@/data/cases'
 </script>
 
@@ -18,6 +19,18 @@ import { customerCases } from '@/data/cases'
 
       <div class="case-grid">
         <article v-for="c in customerCases" :key="c.id" class="case reveal">
+          <div v-if="c.video || c.image" class="case__media">
+            <video
+              v-if="c.video"
+              :src="c.video"
+              :poster="c.image"
+              autoplay
+              muted
+              loop
+              playsinline
+            ></video>
+            <img v-else :src="c.image" :alt="`${c.name} · ${c.industry} 案例配图`" loading="lazy" decoding="async" />
+          </div>
           <div class="case__brand">
             <span class="case__logo" aria-hidden="true">{{ c.initial }}</span>
             <div>

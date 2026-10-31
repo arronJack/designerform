@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // 多行业模板库：行业筛选 + CSS 伪设计稿缩略图（无外部图片）。
-import { ref, computed } from 'vue'
+import { ref, computed, reactive } from 'vue'
 import { templates, templateCategories, type ThumbKind } from '@/data/cases'
 
 const activeCat = ref('all')
@@ -11,6 +11,10 @@ const filtered = computed(() =>
 )
 
 const markChar = (name: string) => name.trim().charAt(0)
+
+// 真实配图加载失败时回退到 CSS 缩略版式（保证任何网络/路径异常都不出现裂图）
+const failed = reactive(new Set<string>())
+const onImgError = (id: string) => failed.add(id)
 </script>
 
 <template>
@@ -48,6 +52,16 @@ const markChar = (name: string) => name.trim().charAt(0)
           :style="{ '--tc': t.accent }"
         >
           <div class="tpl__thumb">
+            <img
+              v-if="t.image && !failed.has(t.id)"
+              class="tpl__img"
+              :src="t.image"
+              :alt="`${t.name} · ${t.categoryLabel} 案例配图`"
+              loading="lazy"
+              decoding="async"
+              @error="onImgError(t.id)"
+            />
+            <template v-else>
             <!-- poster -->
             <div v-if="t.kind === 'poster'" class="thumb thumb--poster">
               <span class="thumb__kicker">{{ t.categoryLabel }}</span>
@@ -107,6 +121,7 @@ const markChar = (name: string) => name.trim().charAt(0)
                 <span class="thumb__sub">{{ t.tags[0] }}</span>
               </div>
             </div>
+            </template>
           </div>
           <div class="tpl__meta">
             <div class="tpl__name">{{ t.name }}</div>
