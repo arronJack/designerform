@@ -1,6 +1,8 @@
 <script setup lang="ts">
-// 设计领域真图画廊：8 个设计领域，非对称网格 + 悬停信息浮层。
-import { designFields } from '../data/fields'
+// 设计领域真图画廊：全设计领域，非对称网格 + 悬停信息浮层；点击卡片打开作品详情页。
+import { designFields, type DesignField } from '../data/fields'
+
+const emit = defineEmits<{ (e: 'select', f: DesignField): void }>()
 </script>
 
 <template>
@@ -10,7 +12,7 @@ import { designFields } from '../data/fields'
         <span class="eyebrow">设计领域 · Design Fields</span>
         <h2 class="section__title">不止电商。<br />只要是设计，都在这里。</h2>
         <p class="section__lead">
-          珠宝、建筑、广告、网页、UI·VI、动漫插画、产品与品牌视觉——每个领域都有对应的
+          珠宝、建筑、广告、网页、UI·VI、动漫插画、产品与品牌视觉，以及室内设计、服装设计、游戏场景——每个领域都有对应的
           提示词体系、尺寸规范与出图工作流，同一个引擎，覆盖全品类设计生产。
         </p>
       </div>
@@ -22,6 +24,10 @@ import { designFields } from '../data/fields'
           class="field-card reveal"
           :class="`field-card--${f.span}`"
           :style="{ transitionDelay: `${i * 60}ms` }"
+          role="button"
+          tabindex="0"
+          @click="emit('select', f)"
+          @keydown.enter="emit('select', f)"
         >
           <div class="field-card__media">
             <img
@@ -42,12 +48,14 @@ import { designFields } from '../data/fields'
               <span class="field-card__en">{{ f.en }}</span>
             </h3>
             <p class="field-card__desc">{{ f.desc }}</p>
+            <span class="field-card__more">查看作品详情 →</span>
           </div>
         </article>
       </div>
 
       <p class="fields__note reveal">
-        更多领域持续接入中：室内设计、服装设计、游戏场景、展览展示、工业包装、影视概念……
+        11 个设计领域已上线：产品、珠宝、建筑、广告、网页、UI·VI、动漫插画、品牌视觉，以及新增的
+        室内设计、服装设计、游戏场景。更多领域（展览展示、工业包装、影视概念）持续接入中——
         你所在的行业，就是下一个模板包。
       </p>
     </div>

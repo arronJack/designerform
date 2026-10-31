@@ -9,6 +9,10 @@ export interface DesignField {
   image: string // 相对 base 的路径
   tags: string[]
   span: 'wide' | 'tall' | 'normal' // 非对称网格跨度
+  /** 详情页作品廊（缺省回退到 image） */
+  gallery?: string[]
+  /** 详情页能力亮点 */
+  highlights?: string[]
 }
 
 export const designFields: DesignField[] = [
@@ -83,6 +87,39 @@ export const designFields: DesignField[] = [
     image: 'gallery/brand.jpg',
     tags: ['主视觉', '情绪板', '质感'],
     span: 'wide',
+  },
+  {
+    id: 'interior',
+    name: '室内设计',
+    en: 'Interior',
+    desc: '住宅与商业空间的效果图与软装方案，日景夜景双版本，材质与光环境可分项控制。',
+    image: 'gallery/interior.jpg',
+    gallery: ['gallery/interior.jpg', 'gallery/interior-2.jpg'],
+    tags: ['空间效果图', '软装搭配', '光影'],
+    span: 'wide',
+    highlights: ['客餐厅 / 卧室 / 商业空间一键出图', '日景夜景与季节光环境切换', '软装材质与配色同步延展'],
+  },
+  {
+    id: 'fashion',
+    name: '服装设计',
+    en: 'Fashion',
+    desc: '从灵感企划到成衣视觉，时装大片、Lookbook、潮牌联名一体产出，画风锁定后批量出图。',
+    image: 'gallery/fashion.jpg',
+    gallery: ['gallery/fashion.jpg', 'gallery/fashion-2.jpg'],
+    tags: ['时装大片', 'Lookbook', '潮牌'],
+    span: 'normal',
+    highlights: ['高定时装大片与电商平铺图', '街拍 / 秀场 / Lookbook 风格延展', '系列款配色与图案统一管控'],
+  },
+  {
+    id: 'game',
+    name: '游戏场景',
+    en: 'Game Art',
+    desc: '游戏世界观下的场景与角色概念，写实与二次元两路画风，分镜、原画、宣传图成套供给。',
+    image: 'gallery/game.jpg',
+    gallery: ['gallery/game.jpg', 'gallery/game-2.jpg'],
+    tags: ['场景原画', '角色设定', '概念图'],
+    span: 'normal',
+    highlights: ['场景 / 角色 / 道具概念图', '写实与二次元双画风锁定', '宣传图与加载页素材成套'],
   },
 ]
 

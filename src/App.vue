@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import SiteNav from './components/SiteNav.vue'
 import HeroCanvas from './components/HeroCanvas.vue'
 import LogoMarquee from './components/LogoMarquee.vue'
@@ -12,6 +12,8 @@ import StudioCanvas from './components/StudioCanvas.vue'
 import LiveEditor from './components/LiveEditor.vue'
 import Pricing from './components/Pricing.vue'
 import SiteFooter from './components/SiteFooter.vue'
+import FieldDetail from './components/FieldDetail.vue'
+import type { DesignField } from './data/fields'
 import { useReveal } from './composables/useReveal'
 
 useReveal()
@@ -24,8 +26,16 @@ function toTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
+const activeField = ref<DesignField | null>(null)
+watch(activeField, (v) => {
+  document.body.style.overflow = v ? 'hidden' : ''
+})
+
 onMounted(() => window.addEventListener('scroll', onScroll, { passive: true }))
-onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', onScroll)
+  document.body.style.overflow = ''
+})
 </script>
 
 <template>
@@ -42,7 +52,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
             </span>
             <h1 class="hero__title">一份设计，<br /><span class="accent">无限复用</span>。</h1>
             <p class="hero__lead">
-              DesignerForm 让设计团队把一份稿子建模成可编辑节点树——改文案自动重排、品牌套件一键建库、合规与成本闸门内置。产品、珠宝、建筑、广告、网页、UI·VI、动漫插画，全设计领域一套产能流水线。
+              DesignerForm 让设计团队把一份稿子建模成可编辑节点树——改文案自动重排、品牌套件一键建库、合规与成本闸门内置。产品、珠宝、建筑、广告、网页、UI·VI、动漫插画、品牌视觉，以及室内设计、服装设计、游戏场景，全设计领域一套产能流水线。
             </p>
             <div class="hero__actions">
               <a class="btn btn--primary" href="#studio">
@@ -73,7 +83,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
     <LogoMarquee />
     <Capabilities />
     <Scenarios />
-    <DesignFields />
+    <DesignFields @select="activeField = $event" />
     <TemplateGallery />
     <CustomerCases />
     <StudioCanvas />
@@ -82,6 +92,8 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
   </main>
 
   <SiteFooter />
+
+  <FieldDetail v-if="activeField" :field="activeField" @close="activeField = null" />
 
   <button
     class="to-top"
