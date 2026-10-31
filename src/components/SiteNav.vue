@@ -24,9 +24,9 @@ const links = [
         <a v-for="l in links" :key="l.href" class="nav__link" :href="l.href">{{ l.label }}</a>
       </nav>
       <div class="nav__cta">
-        <a class="nav__link" href="#demo">登录</a>
+        <a class="nav__link" href="#demo">在线体验</a>
         <a class="btn btn--primary" href="#pricing">
-          免费试用 <span class="btn__arrow">→</span>
+          查看套餐 <span class="btn__arrow">→</span>
         </a>
       </div>
     </div>

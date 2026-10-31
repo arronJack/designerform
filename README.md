@@ -4,6 +4,8 @@
 
 > 一份设计，无限复用 · 改文案，不重排 · 规模化的设计产能
 
+> ⚠️ **演示站声明**：本项目为**早期演示版本**，页面功能与套餐定价仅作形态示意，**暂未正式上线、不提供任何付费服务、不接受任何付款**。对外推广材料一律按「演示站」口径表述，不得写为「已上线 / 可购买 / 已交付客户案例」。
+
 ## 设计定调（Design Direction）
 
 - **目的**：向电商 / 品牌 / 运营团队推介 DesignerForm 这个专业设计平台。
@@ -11,12 +13,15 @@
 - **字体**：展示字 `Bricolage Grotesque`（拉丁）+ `Noto Serif SC`（中文标题）；正文 `Noto Sans SC` + `Sora`。
 - **记忆点**：首屏一块**永不停止的实时设计画布**（设计稿被自动套版/出图），以及下方**真能玩的可交互编辑器**（选模板 → 改文案/配色 → 右侧实时刷新）。
 - **案例最全**：20 个多行业模板样例（可筛选）+ 10 个客户/品牌落地案例（背景→方案→效果）+ 1 个可交互 Demo。
-- **全设计领域**：产品 / 珠宝 / 建筑 / 广告 / 网页 / UI·VI / 动漫插画 / 品牌视觉 八大领域真图作品墙（`public/gallery/`，AI 实拍级出图）。
+- **全设计领域**：产品 / 珠宝 / 建筑 / 广告 / 网页 / UI·VI / 动漫插画 / 品牌视觉 / 室内 / 服装 / 游戏 十一大领域真图作品墙（`public/gallery/`，AI 实拍级出图）。
 - **五大创作场景**：产品设计 · 创意风格 · 社媒内容 · 品牌视觉 · 营销素材（对齐主流 AI 设计平台用例分类）。
 
 ## 在线访问
 
-- **GitHub Pages（已上线）**：https://arronjack.github.io/designerform/
+> 演示站：以下地址均为早期演示版本，非正式上线产品。
+
+- **GitHub Pages（主站）**：https://arronjack.github.io/designerform/
+- **镜像（完整介绍页入口）**：https://arronjack.github.io/designerPlatform/ —— 与上方为同一构建，同步发布
 
 ## 运行
 
@@ -25,7 +30,7 @@ npm install
 npm run dev        # 本地开发 http://localhost:5188
 npm run build      # 生产构建到 dist/
 npm run preview    # 预览构建产物
-npm run deploy     # 一键部署 GitHub Pages（构建 dist-gh → force push gh-pages 分支）
+npm run deploy     # 一键部署 GitHub Pages（构建 dist-site → force push gh-pages 分支）
 ```
 
 ## 目录

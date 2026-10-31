@@ -18,6 +18,15 @@ import { useReveal } from './composables/useReveal'
 
 useReveal()
 
+// 演示站声明条：默认显示，可关闭（localStorage 记忆）。对齐对外口径：早期演示、暂不商业化。
+const demoClosed = ref(false)
+onMounted(() => {
+  try { demoClosed.value = localStorage.getItem('df_demo_bar_closed') === '1' } catch {}
+})
+watch(demoClosed, (v) => {
+  try { localStorage.setItem('df_demo_bar_closed', v ? '1' : '0') } catch {}
+})
+
 const showTop = ref(false)
 function onScroll() {
   showTop.value = window.scrollY > 600
@@ -39,6 +48,16 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
+  <div v-if="!demoClosed" class="demo-bar" role="note">
+    <span class="demo-bar__dot" aria-hidden="true"></span>
+    <p class="demo-bar__text">
+      演示站 · 本页面为<strong>早期演示版本</strong>：功能与定价仅作形态示意，暂未正式上线、不提供任何付费服务。
+    </p>
+    <button class="demo-bar__close" type="button" aria-label="关闭演示站提示" @click="demoClosed = true">
+      ×
+    </button>
+  </div>
+
   <SiteNav />
 
   <main id="top">
