@@ -11,6 +11,8 @@ interface CanvasDesign {
   h: string
   sub: string
   tag: string
+  /** 真实设计预览图（public/hero 下，相对路径） */
+  image: string
 }
 
 const designs: CanvasDesign[] = [
@@ -22,6 +24,7 @@ const designs: CanvasDesign[] = [
     h: '轻氧保湿精华',
     sub: '改文案，整页自动重排，主图与卖点一次到位。',
     tag: '实时预览',
+    image: 'hero/hero-spring.jpg',
   },
   {
     dark: true,
@@ -31,6 +34,7 @@ const designs: CanvasDesign[] = [
     h: '这杯也太好喝',
     sub: '竖版封面 + 三段文案结构，信息流点击优先。',
     tag: '多尺寸延展',
+    image: 'hero/hero-drink.jpg',
   },
   {
     dark: false,
@@ -40,6 +44,7 @@ const designs: CanvasDesign[] = [
     h: '明前龙井',
     sub: '盒型结构与主视觉面同步，烫印提示可见。',
     tag: '印刷级',
+    image: 'hero/hero-tea.jpg',
   },
   {
     dark: true,
@@ -49,6 +54,7 @@ const designs: CanvasDesign[] = [
     h: '墨构 Studio',
     sub: '字标 + 圆徽组合，标准色与留白一次给齐。',
     tag: '可注册',
+    image: 'hero/hero-brand.jpg',
   },
 ]
 
@@ -73,10 +79,21 @@ const active = () => designs[current.value]
 <template>
   <div class="hero__canvas" role="img" :aria-label="`实时设计画布：${active().top}`">
     <div
-      class="canvas-frame"
+      class="canvas-frame canvas-frame--photo"
       :class="{ 'canvas-frame--dark': active().dark }"
       :style="{ '--canvas-accent': active().accent }"
     >
+      <!-- 4 张真实设计稿常驻 DOM、按序交叉淡入（避免切换时白闪） -->
+      <img
+        v-for="(d, i) in designs"
+        :key="d.h"
+        class="canvas-photo"
+        :class="{ 'is-active': i === current }"
+        :src="d.image"
+        :alt="`${d.h} · ${d.top} 设计预览`"
+        decoding="async"
+      />
+      <div class="canvas-scrim" aria-hidden="true"></div>
       <div class="canvas-top">
         <span>{{ active().top }}</span>
         <span>●</span>
@@ -85,7 +102,6 @@ const active = () => designs[current.value]
         <span class="canvas-kicker">{{ active().kicker }}</span>
         <span class="canvas-h">{{ active().h }}</span>
         <span class="canvas-sub">{{ active().sub }}</span>
-        <div class="canvas-swatch"></div>
       </div>
       <span class="canvas-tag">{{ active().tag }}</span>
     </div>

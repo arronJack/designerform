@@ -301,6 +301,59 @@
   background: #15131f;
   color: #f3eefb;
 }
+/* 真实设计稿预览：整幅铺满 + 底部压暗 + 白字叠放（海报式呈现） */
+.canvas-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.7s var(--ease-out, ease);
+  display: block;
+}
+.canvas-photo.is-active {
+  opacity: 1;
+}
+.canvas-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 8, 6, 0.08) 0%,
+    rgba(10, 8, 6, 0.32) 46%,
+    rgba(10, 8, 6, 0.8) 100%
+  );
+  pointer-events: none;
+}
+.canvas-frame--photo {
+  color: #fff;
+}
+.canvas-frame--photo .canvas-top,
+.canvas-frame--photo .canvas-body {
+  position: relative;
+  z-index: 2;
+}
+.canvas-frame--photo .canvas-body {
+  justify-content: flex-end;
+  padding-bottom: 22px;
+}
+.canvas-frame--photo .canvas-h {
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.42);
+}
+.canvas-frame--photo .canvas-sub {
+  opacity: 0.92;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+}
+.canvas-frame--photo .canvas-kicker {
+  color: #fff;
+  opacity: 0.92;
+}
+.canvas-frame--photo .canvas-tag {
+  z-index: 3;
+}
 .canvas-top {
   display: flex;
   justify-content: space-between;
